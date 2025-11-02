@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*header区域*/
+        header{
+            display:grid;
+            grid-template-columns: 1fr 3fr 1fr;
+            grid-template-rows: 60px;
+            width: 100%;
+        }
+        .logo{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo svg{
+            width: 50px;
+            height: 50px;
+        }
+        .nav{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-around;
+            align-content: space-around;
+            flex-wrap: wrap;
+        }
+        .nav a{
+            color: rgb(8, 8, 8);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+        .nav a.active {
+            color: #ff6700;
+            background-color: #fff3eb;
+            font-weight: bold;
+        }
+        .nav a:hover{
+            color: #ff6700;
+        }
+        /*Tab切换样式*/
+        .tab-container {
+            width: 100%;
+            margin-top: 1px;
+        }
+        .tab-content {
+            display: none;
+            padding: 5px;
+            background-color: #faf9f9;
+            border: 1px solid #eee;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+        /*Tab切换样式end*/
+        .login{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login a{
+            color: rgb(12, 12, 12);
+            text-decoration: none;
+            font-size: 14px;
+        }
+        /*header区域end*/
+        /*main区域*/
+        .lunbo{ 
+            position: relative;
+            height: 500px;
+        } 
+         .image{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            
+        }
+        .image.active{
+            opacity:1 ;
+        }
+        .pics{
+            margin-top: 7px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .pics img{
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        /*main区域end*/
+
+        /*footer区域*/
+       .section1 {
+            display: grid;
+            grid-template-columns: 4fr 1fr;
+        }
+        
+        .section1 .left {
+            display: flex;
+            justify-content: space-around;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .section1 .left ul li{
+            list-style: none;
+            font-size: 12px;
+            color: rgb(128, 128, 128);
+        }
+        .section1 .left ul li:first-child{
+            font-size: 14px;
+            color: black;
+        }
+        .section1 .right {
+            font-size: 13px;
+            color: rgb(128, 128, 128);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding-top: 10px;
+
+        }
+        .section2 {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            grid-template-rows: 150px;
+            background-color: rgb(234, 233, 231);
+        }
+        .section2 .left {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .section2 .right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .section2 .left svg{
+            width: 50px;
+            height: 50px;
+        }
+        /*footer区域end*/
+
+        /*隐藏导航栏*/
+        @media (max-width: 800px) {
+            .nav {display: none;}
+            .login{display: none;}
+        }
+        
+    </style>
+</head>
+<body style="margin: 0;padding: 0;">
+    <header>
+        <div class="logo">
+            <svg data-v-777bda80="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 808 808" 
+            class="mi-logo"><g data-v-777bda80=""><path data-v-777bda80="" fill="#ff6900" d="M723.79,84.42C647.55,8.48,537.94,0,404,0,269.89,0,160.12,8.58,83.92,84.72S0,270.43,0,404.39,7.74,648,84,724.14,269.9,808,404,808s243.85-7.71,320-83.86,84-185.78,84-319.75C808,270.25,800.16,160.54,723.79,84.42Z"> 
+            </path> <path data-v-777bda80="" fill="#fff" d="M374.26,553.72a5,5,0,0,1-5.06,5H300.3a5.05,5.05,0,0,1-5.12-5V373.53a5.05,5.05,0,0,1,5.12-5h68.9a5,5,0,0,1,5.06,5Z"></path> <path data-v-777bda80="" fill="#fff" d="M509.18,553.72a5.05,5.05,0,0,1-5.09,5H438.5a5,5,0,0,1-5.1-5V398.26c-.07-27.15-1.62-55-15.64-69.06-12-12.09-34.51-14.86-57.88-15.44H241a5,5,0,0,0-5.07,5v235a5.07,5.07,0,0,1-5.12,5H165.16a5,5,0,0,1-5.06-5V254.31a5,5,0,0,1,5.06-5H354.52c49.49,0,101.22,2.26,126.74,27.81s27.92,77.3,27.92,126.85Z"></path> <path data-v-777bda80="" fill="#fff" d="M644.29,553.72a5.06,5.06,0,0,1-5.09,5H573.
+            57a5,5,0,0,1-5.08-5V254.31a5,5,0,0,1,5.08-5H639.2a5.06,5.06,0,0,1,5.09,5Z"></path></g></svg>
+        </div>
+<div class="nav">
+    <a href="#" class="tab-link active" data-tab="tab1">小米官网</a>
+    <a href="#" class="tab-link" data-tab="tab2">小米商城</a>
+    <a href="#" class="tab-link" data-tab="tab3">小米澎湃OS</a>
+    <a href="#" class="tab-link" data-tab="tab4">小米汽车</a>
+    <a href="#" class="tab-link" data-tab="tab5">小米影像</a>
+    <a href="#" class="tab-link" data-tab="tab6">云服务</a>
+    <a href="#" class="tab-link" data-tab="tab7">IoT</a>
+    <a href="#" class="tab-link" data-tab="tab8">有品</a>
+    <a href="#" class="tab-link" data-tab="tab9">小爱开放平台</a>
+    <a href="#" class="tab-link" data-tab="tab10">Location</a>
+</div>
+<div class="login">
+    <a href="#">登录</a>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <a href="#">注册</a>
+</div>
+    </header>
+    <div class="tab-container">
+        <div id="tab1" class="tab-content active">
+            <h3>小米官网</h3>
+            <p>探索小米最新产品与技术，了解小米公司动态和企业文化。</p>
+        </div>
+        <div id="tab2" class="tab-content">
+            <h3>小米商城</h3>
+            <p>小米官方正品购物平台，涵盖手机、智能家居、配件等全品类产品。</p>
+        </div>
+        <div id="tab3" class="tab-content">
+            <h3>小米澎湃OS</h3>
+            <p>小米自研操作系统，为小米设备提供流畅的用户体验。</p>
+        </div>
+        <div id="tab4" class="tab-content">
+            <h3>小米汽车</h3>
+            <p>小米汽车，科技改变出行，为用户带来智能电动出行体验。</p>
+        </div>
+        <div id="tab5" class="tab-content">
+            <h3>小米影像</h3>
+            <p>小米专业影像技术，记录生活精彩瞬间。</p>
+        </div>
+        <div id="tab6" class="tab-content">
+            <h3>云服务</h3>
+            <p>安全可靠的云存储服务，数据备份更安心。</p>
+        </div>
+        <div id="tab7" class="tab-content">
+            <h3>IoT</h3>
+            <p>小米物联网生态，智能连接，简化生活。</p>
+        </div>
+        <div id="tab8" class="tab-content">
+            <h3>有品</h3>
+            <p>精选品质生活好物，为用户提供高品质消费体验。</p>
+        </div>
+        <div id="tab9" class="tab-content">
+            <h3>小爱开放平台</h3>
+            <p>小爱同学AI助手开放平台，接入更多智能服务。</p>
+        </div>
+        <div id="tab10" class="tab-content">
+            <h3>Location</h3>
+            <p>小米地图服务和位置相关功能。</p>
+        </div>
+    </div>
+    <main>
+        <div class="lunbo">
+            <img class="image active" src="p4.jpg" >
+            <img class="image" src="p3.jpg" >
+        </div>
+        <div class="pics">
+            <img src="p3.jpg" >
+            <img src="p6.jpg" >
+            <img src="p7.jpg" >
+            <img src="p8.jpg" >
+        </div>
+    </main>
+
+   <footer>
+    <section class="section1">
+    <div class="left">
+    <ul>
+        <li>选购指南</li>
+        <li>手机</li>
+        <li>电视</li>
+        <li>笔记本</li>
+        <li>平板</li>
+        <li>穿戴</li>
+        <li>耳机</li>
+        <li>家电</li>
+        <li>路由器</li>
+        <li>音箱</li>
+        <li>配件</li>
+    </ul>
+    <ul>
+        <li>服务中心</li>
+        <li>申请售后</li>
+        <li>售后政策</li>
+        <li>服务价格</li>
+        <li>订单查询</li>
+        <li>以旧换新</li>
+        <li>保障服务</li>
+        <li>防伪查询</li>
+        <li>F码通道</li>
+    </ul>
+    <ul>
+        <li>线下门店</li>
+        <li>小米之家</li>
+        <li>服务网点</li>
+        <li>授权体验店/专区</li>
+    </ul>
+    <ul>
+        <li>关于小米</li>
+        <li>了解小米</li>
+        <li>加入小米</li>
+        <li>投资者关系</li>
+        <li>ESG与可持续发展</li>
+        <li>廉洁举报</li>
+    </ul>
+    <ul>
+        <li>关注我们</li>
+        <li>新浪微博</li>
+        <li>官方微信</li>
+        <li>联系我们</li>
+        <li>公益基金会</li>
+    </ul>
+    </div>
+    <div class="right">
+     950816
+
+     8:00-18:00（仅收市话费）
+
+     人工客服
+     950818
+
+     8:00-18:00（仅收市话费）
+
+     手机适用于：Xiaomi MIX Fold系列、MIX Flip系列、数字12系列及以上
+
+     电视适用于：98寸、100寸电视
+
+     人工客服
+    </div>
+    </section>
+    <section class="section2">
+        <div class="left">
+            <svg data-v-777bda80="" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 808 808" 
+            class="mi-logo"><g data-v-777bda80=""><path data-v-777bda80="" fill="#ff6900" d="M723.79,84.42C647.55,8.48,537.94,0,404,0,269.89,0,160.12,8.58,83.92,84.72S0,270.43,0,404.39,7.74,648,84,724.14,269.9,808,404,808s243.85-7.71,320-83.86,84-185.78,84-319.75C808,270.25,800.16,160.54,723.79,84.42Z"> 
+            </path> <path data-v-777bda80="" fill="#fff" d="M374.26,553.72a5,5,0,0,1-5.06,5H300.3a5.05,5.05,0,0,1-5.12-5V373.53a5.05,5.05,0,0,1,5.12-5h68.9a5,5,0,0,1,5.06,5Z"></path> <path data-v-777bda80="" fill="#fff" d="M509.18,553.72a5.05,5.05,0,0,1-5.09,5H438.5a5,5,0,0,1-5.1-5V398.26c-.07-27.15-1.62-55-15.64-69.06-12-12.09-34.51-14.86-57.88-15.44H241a5,5,0,0,0-5.07,5v235a5.07,5.07,0,0,1-5.12,5H165.16a5,5,0,0,1-5.06-5V254.31a5,5,0,0,1,5.06-5H354.52c49.49,0,101.22,2.26,126.74,27.81s27.92,77.3,27.92,126.85Z"></path> <path data-v-777bda80="" fill="#fff" d="M644.29,553.72a5.06,5.06,0,0,1-5.09,5H573.
+            57a5,5,0,0,1-5.08-5V254.31a5,5,0,0,1,5.08-5H639.2a5.06,5.06,0,0,1,5.09,5Z"></path></g></svg>
+        </div>
+        <div class="right">
+            <p>
+                小米公司（深圳）有限公司
+            </p>
+            <p>
+                粤ICP备15032322号-1
+            </p>
+            <p>
+                粤公网安备 44030502000001号
+            </p>
+        </div>
+    </section>
+   </footer>
+
+<script>
+        /*轮播图功能*/
+    function startslideShow(){
+    var imges = document.querySelectorAll(".image");
+    var index = 0;
+   setInterval(function(){
+    imges[index].classList.remove("active");
+    index = (index + 1) % imges.length;
+    imges[index].classList.add("active");
+   },3000)
+}
+startslideShow();
+        
+        // Tab切换功能
+        document.querySelectorAll('.tab-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // 移除所有导航链接的激活状态
+                document.querySelectorAll('.tab-link').forEach(item => {
+                    item.classList.remove('active');
+                });
+                
+                // 添加当前导航链接的激活状态
+                this.classList.add('active');
+                
+                // 隐藏所有内容区域
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // 显示对应内容区域
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+</script>
+</html>
